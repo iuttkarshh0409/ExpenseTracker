@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Expense Tracker</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600">Expense Tracker</h1>
+            <p class="text-gray-600">Manage your expenses efficiently</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <!-- Add Expense Form -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Add New Expense</h2>
+                    <form id="expenseForm" class="space-y-4">
+                        <div class="form-group">
+                            <label class="block text-gray-700">Description</label>
+                            <input type="text" id="description" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-gray-700">Amount ($)</label>
+                            <input type="number" id="amount" class="form-control" required min="0" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-gray-700">Category</label>
+                            <select id="category" class="form-select">
+                                <option value="food">Food</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-gray-700">Date</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Add Expense</button>
+                    </form>
+                </div>
+
+                <!-- Budget Setting -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Budget Settings</h2>
+                    <div class="form-group">
+                        <label class="block text-gray-700">Monthly Budget ($)</label>
+                        <input type="number" id="monthlyBudget" class="form-control" min="0" step="0.01">
+                        <button id="setBudget" class="btn btn-success mt-3 w-full">Set Budget</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-6">
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-700">Total Expenses</h3>
+                        <p id="totalExpenses" class="text-2xl font-bold text-red-500">$0.00</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-700">Remaining Budget</h3>
+                        <p id="remainingBudget" class="text-2xl font-bold text-green-500">$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Expense Chart -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Expense Distribution</h2>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+
+                <!-- Recent Expenses -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Recent Expenses</h2>
+                    <div class="overflow-x-auto">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseList">
+                                <!-- Expenses will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

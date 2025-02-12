@@ -1,0 +1,255 @@
+/* Custom styles to complement Tailwind and Bootstrap */
+
+/* Enhanced Background */
+body {
+    background: linear-gradient(135deg, #f6f8ff 0%, #f1f5ff 100%);
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(120deg, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+        linear-gradient(-120deg, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+    z-index: -2;
+}
+
+/* Animated circles */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 25%);
+    animation: backgroundShift 20s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+/* Floating Shapes */
+.container::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: 
+        radial-gradient(4px 4px at 40px 60px, #3b82f6 50%, transparent 50%),
+        radial-gradient(4px 4px at 90% 10%, #6366f1 50%, transparent 50%),
+        radial-gradient(6px 6px at 10% 80%, #3b82f6 50%, transparent 50%),
+        radial-gradient(4px 4px at 80% 90%, #6366f1 50%, transparent 50%);
+    background-repeat: no-repeat;
+    animation: floatingDots 15s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Geometric Patterns */
+.container::after {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(59, 130, 246, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(99, 102, 241, 0.05) 25%, transparent 25%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    animation: patternShift 20s linear infinite;
+    z-index: -1;
+}
+
+/* Background Animations */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes floatingDots {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(20px) translateX(10px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+@keyframes patternShift {
+    0% {
+        background-position: 0 0, 30px 30px;
+    }
+    100% {
+        background-position: 60px 0, 90px 30px;
+    }
+}
+
+/* Card Styling */
+.shadow-md {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.shadow-md:hover {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Header Enhancement */
+.text-blue-600 {
+    background: linear-gradient(45deg, #3b82f6, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Controls */
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    border-color: #3b82f6;
+}
+
+.form-control, .form-select {
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.form-control:hover, .form-select:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(45deg, #3b82f6, #6366f1);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #2563eb, #4f46e5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #10b981, #059669);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: linear-gradient(45deg, #059669, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+/* Table Styling */
+.table {
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.table th {
+    font-weight: 600;
+    color: #374151;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.table tr:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Notification Enhancement */
+.alert {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Chart Container */
+#expenseChart {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .table {
+        font-size: 0.9rem;
+    }
+
+    body::before {
+        background: 
+            radial-gradient(circle at 25% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 35%),
+            radial-gradient(circle at 75% 70%, rgba(99, 102, 241, 0.08) 0%, transparent 35%);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #3b82f6, #6366f1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #2563eb, #4f46e5);
+}
